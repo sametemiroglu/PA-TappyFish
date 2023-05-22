@@ -137,7 +137,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: LoadingBar
+      name: Obstacle
       rect:
         serializedVersion: 2
         x: 808
@@ -567,8 +567,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      Obstacle: 604064850
       Up: 48913975
-      LoadingBar: 604064850
       tappy_fish_ui_elements_23: -1673576419
       Fish_1: 2098762924
       tappy_fish_ui_elements_10: 2146527486
