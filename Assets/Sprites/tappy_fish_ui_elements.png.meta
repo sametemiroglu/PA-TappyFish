@@ -179,27 +179,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fish_4
-      rect:
-        serializedVersion: 2
-        x: 1013
-        y: 1346
-        width: 165
-        height: 140
-      alignment: 9
-      pivot: {x: 0.43172348, y: 0.39807215}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a26a8d0cf17749544bad10f4363465e2
-      internalID: -7855446
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: BronzeCoin
       rect:
         serializedVersion: 2
@@ -258,27 +237,6 @@ TextureImporter:
       bones: []
       spriteID: 58dac57f8363f8146828dd85c0c13731
       internalID: -174881717
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Up
-      rect:
-        serializedVersion: 2
-        x: 1046
-        y: 1162
-        width: 103
-        height: 135
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d999435604946374a801460449de062d
-      internalID: 48913975
       vertices: []
       indices: 
       edges: []
@@ -347,34 +305,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TapLeft
-      rect:
-        serializedVersion: 2
-        x: 786
-        y: 887
-        width: 184
-        height: 100
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8e2d3c2576b02f34693e0569cd50ec71
-      internalID: -624816083
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Tap
       rect:
         serializedVersion: 2
-        x: 1008
+        x: 780
         y: 871
-        width: 168
-        height: 234
+        width: 626
+        height: 624
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -384,27 +321,6 @@ TextureImporter:
       bones: []
       spriteID: a5beef9381ed7ca48822d3eb0a5594ef
       internalID: 301919138
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TapRight
-      rect:
-        serializedVersion: 2
-        x: 1224
-        y: 887
-        width: 182
-        height: 100
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1555ec3a6b5845a4dbcb78536fcfc233
-      internalID: 478582812
       vertices: []
       indices: 
       edges: []
@@ -476,10 +392,10 @@ TextureImporter:
       name: Terrain
       rect:
         serializedVersion: 2
-        x: 29
+        x: 47
         y: 77
-        width: 1075
-        height: 359
+        width: 1038
+        height: 342
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
