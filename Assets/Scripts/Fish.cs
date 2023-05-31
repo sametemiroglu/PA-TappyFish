@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Fish : MonoBehaviour
 {
     private Rigidbody2D _rb;
@@ -10,6 +11,7 @@ public class Fish : MonoBehaviour
     int angle;
     int maxAngle = 15;
     int minAngle = -20;
+    public Score score;
 
     void Start()
     {
@@ -40,5 +42,12 @@ public class Fish : MonoBehaviour
         }
         transform.rotation = Quaternion.Euler(0, 0, angle);
 
+    }
+    private void OnTriggerEnter2D(Collider2D Collision)
+    {
+        {
+            score.Scored();
+            Debug.Log("scored");
+        }
     }
 }
