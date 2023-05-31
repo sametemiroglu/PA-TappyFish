@@ -6,48 +6,105 @@ using UnityEngine;
 public class Fish : MonoBehaviour
 {
     private Rigidbody2D _rb;
-    [SerializeField]
-    private float speed;
+    public float speed;
     int angle;
     int maxAngle = 15;
     int minAngle = -20;
     public Score score;
+    public GameManager gameManager;
+    public Sprite fishDied;
+    SpriteRenderer sp;
+
+
+    bool touchedGround;
 
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
+         sp = GetComponent<SpriteRenderer>();
     }
 
     
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        FishSwim();
+    }
+
+
+    private void FixedUpdate()
+    {
+        FishRotation();
+    }
+    void FishSwim()
+    {
+        if (Input.GetMouseButtonDown(0)  && GameManager.gameOver == false )
         {
+            _rb.velocity = Vector3.zero;
             _rb.velocity = new Vector2(_rb.velocity.x, speed);
         }
+    }
+
+
+    void FishRotation()
+    {
         if (_rb.velocity.y > 0)
         {
             if (angle <= maxAngle)
             {
                 angle = angle + 4;
-            }         
+            }
         }
 
         else if (_rb.velocity.y < -2.5f)
         {
             if (angle > minAngle)
             {
-                angle = angle - 2 ;
+                angle = angle - 2;
             }
-        }
-        transform.rotation = Quaternion.Euler(0, 0, angle);
+        }       
+    }
 
-    }
+
     private void OnTriggerEnter2D(Collider2D Collision)
+    {      
+            if (Collision.gameObject.gameObject.CompareTag("Obstacle"))
+            {
+                    score.Scored();
+                    Debug.Log("scored");
+            }
+            else if (Collision.gameObject.CompareTag("Column"))
+            {
+
+
+            }
+           
+    }
+
+    private void OnCollisionEnter2D (Collision2D collision)
     {
+        if (collision.gameObject.CompareTag("Ground"))
         {
-            score.Scored();
-            Debug.Log("scored");
+            if (GameManager.gameOver == false )
+            {
+                //gameManager.gameOver();
+                GameOver();
+            }
+            else
+            {
+                GameOver();
+            }
+            
         }
     }
+
+    void GameOver()
+    {
+        touchedGround = true;
+        sp.sprite = fishDied;
+        //anim.enabled = false;
+        transform.rotation = Quaternion.Euler (0, 0, -90);
+    }
+
+   
+
 }

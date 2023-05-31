@@ -27,7 +27,11 @@ public class LeftMovement : MonoBehaviour
 
     void Update()
     {
-        transform.position = new Vector3(transform.position.x-speed*Time.deltaTime, transform.position.y, 0);
+        if (GameManager.gameOver == false)
+        {
+            transform.position = new Vector3(transform.position.x - speed * Time.deltaTime, transform.position.y, 0);
+        }
+        
 
         if (gameObject.CompareTag("Ground")) {
 
