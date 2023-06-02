@@ -10,6 +10,7 @@ public class LeftMovement : MonoBehaviour
     BoxCollider2D box;
     float groundWidht;
     float obstacleWidth;
+    
     void Start()
     {
         if (gameObject.CompareTag("Ground"))

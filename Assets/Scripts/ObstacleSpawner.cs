@@ -11,7 +11,7 @@ public class ObstacleSpawner : MonoBehaviour
     public float maxY;
     private float randomY;
     
-    private void InstantiateObstacle()
+    public void InstantiateObstacle()
     {
         randomY = Random.Range(minY, maxY);
         GameObject newObstacle = Instantiate(obstacle);
@@ -19,14 +19,14 @@ public class ObstacleSpawner : MonoBehaviour
     }
     void Start()
     {
-        InstantiateObstacle();
+        //InstantiateObstacle();
     }
 
     
     void Update()
     {
 
-        if (GameManager.gameOver ==  false) 
+        if (GameManager.gameOver ==  false && GameManager.gameStarted == true) 
         {
             timer += Time.deltaTime;
 

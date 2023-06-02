@@ -14,6 +14,10 @@ public class Fish : MonoBehaviour
     public GameManager gameManager;
     public Sprite fishDied;
     SpriteRenderer sp;
+    Animator anim;
+    public ObstacleSpawner obstacleSpawner;
+    [SerializeField] private AudioSource swim, hit, point;
+    
 
 
     bool touchedGround;
@@ -21,7 +25,9 @@ public class Fish : MonoBehaviour
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
+        _rb.gravityScale = 0;
          sp = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
     }
 
     
@@ -35,16 +41,30 @@ public class Fish : MonoBehaviour
     {
         FishRotation();
     }
+    
+    
+    
     void FishSwim()
     {
         if (Input.GetMouseButtonDown(0)  && GameManager.gameOver == false )
         {
-            _rb.velocity = Vector3.zero;
-            _rb.velocity = new Vector2(_rb.velocity.x, speed);
+            if (GameManager.gameStarted == false) 
+            {
+                swim.Play();
+                _rb.gravityScale = 3f;
+                _rb.velocity = Vector3.zero;
+                _rb.velocity = new Vector3(_rb.velocity.x, speed, 0);
+                obstacleSpawner.InstantiateObstacle();
+                gameManager.GameHasStarted();
+            }
+            else
+            {
+                _rb.velocity = Vector3.zero;
+                _rb.velocity = new Vector2(_rb.velocity.x, speed);
+            }
+            
         }
     }
-
-
     void FishRotation()
     {
         if (_rb.velocity.y > 0)
@@ -61,24 +81,35 @@ public class Fish : MonoBehaviour
             {
                 angle = angle - 2;
             }
-        }       
+        }   
+        if (touchedGround == false )
+        {
+            transform.rotation = Quaternion.Euler(0,0, angle);
+        }
     }
 
 
-    private void OnTriggerEnter2D(Collider2D Collision)
-    {      
-            if (Collision.gameObject.gameObject.CompareTag("Obstacle"))
-            {
-                    score.Scored();
-                    Debug.Log("scored");
-            }
-            else if (Collision.gameObject.CompareTag("Column"))
-            {
 
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {      
+            if (collision.CompareTag("Obstacle"))
+            {
+                    point.Play();
+                    score.Scored();
+                    
+            }
+            else if (collision.CompareTag("Column") && GameManager.gameOver == false)
+            {
+                    hit.Play();
+                    gameManager.GameOver();
 
             }
            
     }
+
+
 
     private void OnCollisionEnter2D (Collision2D collision)
     {
@@ -87,11 +118,13 @@ public class Fish : MonoBehaviour
             if (GameManager.gameOver == false )
             {
                 //gameManager.gameOver();
+                hit.Play();
+                gameManager.GameOver();
                 GameOver();
             }
             else
             {
-                GameOver();
+                GameOver(); 
             }
             
         }
@@ -101,7 +134,7 @@ public class Fish : MonoBehaviour
     {
         touchedGround = true;
         sp.sprite = fishDied;
-        //anim.enabled = false;
+        anim.enabled = false;
         transform.rotation = Quaternion.Euler (0, 0, -90);
     }
 
